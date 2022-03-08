@@ -1,4 +1,3 @@
-from locale import currency
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
@@ -29,13 +28,13 @@ class User(AbstractUser):
         (CURRENCY_KRW, "KRW")
     )
 
-    avatar = models.ImageField(null=True, blank=True)
+    avatar = models.ImageField(blank=True)
     gender = models.CharField(choices=GENDER_CHOICE,
-                              max_length=10, null=True, blank=True)
-    bio = models.TextField(default="", blank=True)
-    birthdate = models.DateField(null=True, blank=True)
+                              max_length=10, blank=True)
+    bio = models.TextField(blank=True)
+    birthdate = models.DateField(blank=True, null=True)
     language = models.CharField(
-        choices=LANGUAGE_CHOICES, max_length=20, null=True, blank=True)
+        choices=LANGUAGE_CHOICES, max_length=20, blank=True)
     currency = models.CharField(
-        choices=CURRENCY_CHOICES, max_length=3, null=True, blank=True)
+        choices=CURRENCY_CHOICES, max_length=3, blank=True)
     superhost = models.BooleanField(default=False)
